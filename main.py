@@ -26,7 +26,9 @@ class TestOzonUrl:
         search_field.send_keys(phrase)
         search_field.send_keys(Keys.RETURN)
 
-        search_brand = browser.find_element(By.XPATH, '(//span[@class = "show"])[2]')
+
+
+        search_brand = browser.find_element(By.XPATH, '(//span[contains(text(), "Посмотреть все")])[2]')
         search_brand.click()
         search_beats = browser.find_element(By.XPATH, '//span[@class = "ys5"][contains(text(), "Beats")]')
         search_beats.click()
@@ -36,21 +38,19 @@ class TestOzonUrl:
         search_samsung = browser.find_element(By.XPATH, '//span[@class = "ys5"][contains(text(), "Samsung")]')
         search_samsung.click()
 
-        # search_brand = browser.find_element(By.XPATH, '(//span[@class = "show"])[2]')
-        # search_brand.click()
-        # search_xiaomi = browser.find_element(By.XPATH, '//span[@class = "ys5"][contains(text(), "Xiaomi")]')
-        # search_xiaomi.click()
+        search_brand = browser.find_element(By.XPATH, '(//span[@class = "show"])[2]')
+        search_brand.click()
+        search_xiaomi = browser.find_element(By.XPATH, '//span[@class = "ys5"][contains(text(), "Xiaomi")]')
+        search_xiaomi.click()
 
         price_element = browser.find_element(By.XPATH, '(//input[@type="text"])[3]')
         price_element.send_keys(Keys.DELETE)
         price_element.send_keys('20000')
  #4.  Ограничить цену – до 50 000
-#
-#
+
 # #5. Отметить чекбокс – Высокий рейтинг
-# checkbox_rating = browser.find_element(By.XPATH, '//div[@value="Высокий рейтинг"]')
-# checkbox_rating.click()
-#
+
+
 #6.  Из результатов поиска добавьте в корзину все нечетные товаров:
 #
 # def test_add_to_cart(browser):
