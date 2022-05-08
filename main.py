@@ -13,6 +13,7 @@ phrase = "беспроводные наушники"
 def browser():
     browser = webdriver.Chrome()
     browser.implicitly_wait(10)
+    # yield конструкция делит функцию на часть до и после тестов
     yield browser
     browser.quit()
 

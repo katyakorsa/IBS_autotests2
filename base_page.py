@@ -1,23 +1,18 @@
-# from .locators import BasePageLocators
-#
-# url = "https://www.ozon.ru/"
-# phrase = "беспроводные наушники"
-#
-# class BasePage():
-#     def __init__(self, browser, url, timeout=''):
-#         self.browser = browser
-#         self.url = url
-#         self.timeout = timeout
-#
-#     def open(self):
-#         self.browser.get(self.URL)
-#
-#     def search(self, phrase):
-#         search_input = self.browser.find_element(*self)
-#
-#     def test_find_elements(self, browser):
-#         browser.get(url)
-#         url = self.browser.find_element(*BasePageLocators, ИСКАТЬ НА ОЗОН)
-#         search_box.send_keys(phrase)
-#         search_button = self.browser.find_element(*BasePageLocators, ПОИСК)
-#         search_button.click()
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+class BasePage:
+    def __init__(self, driver):
+        self.driver = driver
+        self.url = "https://www.ozon.ru/"
+
+    def find_element(self, locator, time=10):
+        return WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator),
+                                                      message=f"Невозможно найти элемент по локатору {locator}")
+
+    def find_elements(self, locator, time=10):
+        return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(locator),
+                                                      message=f"Невозможно найти элемент по локатору {locator}")
+
+    def go_to_site(self):
+        return self.driver.get(self.url)
